@@ -15,3 +15,4 @@ eq_create_label <- function(data) {
         "<b>Magnitude:</b>", data$EQ_PRIMARY, "<br />",
         "<b>Total Deaths:</b>", data$TOTAL_DEATHS, "<br />")
 }
+
