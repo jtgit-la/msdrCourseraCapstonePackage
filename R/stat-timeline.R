@@ -1,9 +1,8 @@
-
 stat_timeline <- function(mapping = NULL, data = NULL, geom = "timeline",
                           position = "identity", na.rm = FALSE,
                           show.legend = NA, inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatTL,
+    stat = StatTimeline,
     data = data,
     mapping = mapping,
     geom = geom,
@@ -16,12 +15,14 @@ stat_timeline <- function(mapping = NULL, data = NULL, geom = "timeline",
 
 
 
-StatTL <- ggplot2::ggproto("StatTL", ggplot2::Stat,
+StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat,
                            compute_group = function(data, scales){
-                             date_min <- data$min_date[1]
-                             date_max <- data$max_date[1]
+
+                             date_min <- dplyr::if_else(is.null(data$min_date[1]), min(data$x), data$min_date[1])
+                             date_max <- dplyr::if_else(is.null(data$max_date[1]), max(data$x), data$max_date[1])
 
                              data %>% dplyr::filter(x >= date_min, x <= date_max)
                            },
-                           required_aes = c("x", "min_date", "max_date")
+                           required_aes = c("x"),
+                           non_missing_aes = c("min_date", "max_date")
 )

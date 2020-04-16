@@ -1,11 +1,10 @@
-
 geom_timeline <- function(mapping = NULL, data = NULL,
                           position = "identity", show.legend = NA,
                           na.rm = FALSE, inherit.aes = TRUE, ...) {
   ggplot2::layer(
     data = data,
     mapping = mapping,
-    stat = StatTL,
+    stat = StatTimeline,
     geom = GeomTimeline,
     position = position,
     show.legend = show.legend,
