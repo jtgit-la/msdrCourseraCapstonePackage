@@ -1,4 +1,3 @@
-
 geom_timeline_label <- function(mapping = NULL, data = NULL,
                                 position = "identity", show.legend = NA,
                                 na.rm = FALSE, inherit.aes = TRUE, ...) {
@@ -59,4 +58,3 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
 
                             draw_key = ggplot2::draw_key_point
 )
-

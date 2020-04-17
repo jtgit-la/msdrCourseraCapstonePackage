@@ -1,3 +1,5 @@
+#'@rdname geom_timeline
+
 stat_timeline <- function(mapping = NULL, data = NULL, geom = "timeline",
                           position = "identity", na.rm = FALSE,
                           show.legend = NA, inherit.aes = TRUE, ...) {
@@ -18,8 +20,8 @@ stat_timeline <- function(mapping = NULL, data = NULL, geom = "timeline",
 StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat,
                            compute_group = function(data, scales){
 
-                             date_min <- dplyr::if_else(is.null(data$min_date[1]), min(data$x), data$min_date[1])
-                             date_max <- dplyr::if_else(is.null(data$max_date[1]), max(data$x), data$max_date[1])
+                             date_min <- ifelse(is.null(data$min_date), min(data$x), data$min_date[1])
+                             date_max <- ifelse(is.null(data$max_date), max(data$x), data$max_date[1])
 
                              data %>% dplyr::filter(x >= date_min, x <= date_max)
                            },

@@ -1,3 +1,22 @@
+#'Geom for NOAA Earthquake dataset
+#'
+#'This geom is used to create timelines for the NOAA Significant Earthquakes dataset.
+#'
+#'@inheritParams ggplot2::layer
+#'@export
+#'
+#'
+#'@section Aesthetics:
+#'
+#' \code{geom_timeline()} understands the following aesthetics (required aesthetics are in bold):
+#' \itemize{
+#'   \item \strong{\code{x}}
+#'   \item \code{min_date}
+#'   \item \code{max_date}
+#'   \item \code{color}
+#'   \item \code{size}
+#'   \item \code{alpha}}
+#'
 geom_timeline <- function(mapping = NULL, data = NULL,
                           position = "identity", show.legend = NA,
                           na.rm = FALSE, inherit.aes = TRUE, ...) {
