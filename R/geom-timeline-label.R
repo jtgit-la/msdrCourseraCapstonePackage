@@ -1,10 +1,11 @@
+#' @rdname geom_timeline
 geom_timeline_label <- function(mapping = NULL, data = NULL,
                                 position = "identity", show.legend = NA,
                                 na.rm = FALSE, inherit.aes = TRUE, ...) {
   ggplot2::layer(
     data = data,
     mapping = mapping,
-    stat = StatTLL,
+    stat = StatTimelineLabel,
     geom = GeomTimelineLabel,
     position = position,
     show.legend = show.legend,
@@ -13,7 +14,7 @@ geom_timeline_label <- function(mapping = NULL, data = NULL,
   )
 }
 
-
+#' @rdname ggproto
 GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
                             required_aes = c("x", "label", "n_max"),
                             non_missing_aes = c("size", "shape", "colour"),

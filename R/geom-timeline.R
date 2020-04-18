@@ -3,8 +3,6 @@
 #'This geom is used to create timelines for the NOAA Significant Earthquakes dataset.
 #'
 #'@inheritParams ggplot2::layer
-#'@export
-#'
 #'
 #'@section Aesthetics:
 #'
@@ -17,6 +15,29 @@
 #'   \item \code{size}
 #'   \item \code{alpha}}
 #'
+#'@examples
+#'library(tidyverse)
+#'
+#'data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
+#'eq_data_raw <- read.delim(data_path)
+#'eq_data <- eq_clean_data(eq_data_raw)
+#'
+#'eq_data_plot <- eq_data %>% filter(COUNTRY %in% c("CANADA", "USA", "MEXICO"))
+#'
+#'# basic timeline of entire dataset
+#'ggplot(eq_data_plot, aes(x = DATE)) + geom_timeline() + theme_eq
+#'
+#'# filter timeline with a min date
+#'ggplot(eq_data_plot, aes(x = DATE, min_date = as.Date("1900-01-01"))) + geom_timeline() + theme_eq
+#'
+#'# add a max date as well
+#'ggplot(eq_data_plot, aes(x = DATE, min_date = as.Date("1900-01-01"), max_date = as.Date("1950-01-01"))) + geom_timeline() + theme_eq
+#'
+#'# use y aesthetic to add COUNTRY stratification
+#'ggplot(eq_data_plot, aes(x = DATE, y = COUNTRY, min_date = as.Date("1900-01-01"), max_date = as.Date("1950-01-01"))) + geom_timeline() + theme_eq
+#'
+#'# use size and color of points to represent magnitude and number of casualties, and set alpha to 0.3
+#'plot <- ggplot(eq_data_plot, aes(x = DATE, y = COUNTRY, min_date = as.Date("1900-01-01"), max_date = as.Date("1950-01-01"), size = EQ_PRIMARY, color = TOTAL_DEATHS)) + geom_timeline(alpha = 0.3) + theme_eq
 geom_timeline <- function(mapping = NULL, data = NULL,
                           position = "identity", show.legend = NA,
                           na.rm = FALSE, inherit.aes = TRUE, ...) {
@@ -34,6 +55,7 @@ geom_timeline <- function(mapping = NULL, data = NULL,
 
 
 
+#'@rdname msdrCourseraCapstonePackage-ggproto
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                            required_aes = c("x"),
                            non_missing_aes = c("size", "shape", "colour"),

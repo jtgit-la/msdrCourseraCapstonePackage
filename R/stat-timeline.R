@@ -16,7 +16,7 @@ stat_timeline <- function(mapping = NULL, data = NULL, geom = "timeline",
 }
 
 
-
+#' @rdname msdrCourseraCapstonePackage-ggproto
 StatTimeline <- ggplot2::ggproto("StatTimeline", ggplot2::Stat,
                            compute_group = function(data, scales){
 
