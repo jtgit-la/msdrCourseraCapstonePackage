@@ -14,7 +14,7 @@ geom_timeline_label <- function(mapping = NULL, data = NULL,
   )
 }
 
-#' @rdname ggproto
+#' @rdname msdrCourseraCapstonePackage-ggproto
 GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
                             required_aes = c("x", "label", "n_max"),
                             non_missing_aes = c("size", "shape", "colour"),
@@ -31,10 +31,10 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
 
                               coords <- coord$transform(data, panel_params)
 
-                              print(coords)
+
                               sort(unique(coords$y))
                               y1_length <- diff(c(sort(unique(coords$y)),0.5)[1:2])/5
-                              print(y1_length)
+
 
                               tl <- grid::segmentsGrob(x0 = coords$x,
                                                        x1 = coords$x,

@@ -3,7 +3,7 @@ stat_timeline_label <- function(mapping = NULL, data = NULL, geom = "timeline_la
                                 position = "identity", na.rm = FALSE,
                                 show.legend = NA, inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatTLL,
+    stat = StatTimelineLabel,
     data = data,
     mapping = mapping,
     geom = geom,
@@ -14,8 +14,8 @@ stat_timeline_label <- function(mapping = NULL, data = NULL, geom = "timeline_la
   )
 }
 
-#' @rdname ggproto
-StatTLL <- ggplot2::ggproto("StatTLL", ggplot2::Stat,
+#' @rdname msdrCourseraCapstonePackage-ggproto
+StatTimelineLabel <- ggplot2::ggproto("StatTimelineLabel", ggplot2::Stat,
                             compute_group = function(data, scales){
                               date_min <- data$min_date[1]
                               date_max <- data$max_date[1]
@@ -35,3 +35,5 @@ StatTLL <- ggplot2::ggproto("StatTLL", ggplot2::Stat,
                             },
                             required_aes = c("x", "n_max")
 )
+
+

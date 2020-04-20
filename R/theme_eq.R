@@ -1,3 +1,6 @@
+#'Theme to use with geom_timeline
+#'
+
 theme_eq <-
   ggplot2::theme_classic() +
   ggplot2::theme(

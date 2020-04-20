@@ -1,0 +1,82 @@
+---
+title: "msdrCourseraCapstone vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{msdrCourseraCapstone_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+devtools::load_all(".")
+```
+
+# Overview 
+
+This package was developed for the capstone project of the Mastering Software Development in R Coursera Specialization. The package provides functions for visualizing the NOAA Significant Earthquakes dataset. 
+
+## Loading and cleaning the dataset 
+
+```{r setup}
+library(msdrCourseraCapstonePackage)
+
+data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
+
+eq_data_raw <- read.delim(data_path)
+
+eq_data <- 
+  eq_data_raw %>% 
+  eq_clean_data() %>% 
+  eq_location_clean()
+```
+
+## Visualizing the data with timelines 
+
+- First subset the data  
+
+```{r visualization_1}
+eq_data_plot <- eq_data %>% filter(COUNTRY %in% c("CANADA", "USA"))
+```
+
+- A simple example:  
+
+```{r visualization_2, fig.width=7, fig.height=2}
+ggplot(eq_data_plot, aes(x = DATE)) + 
+  geom_timeline() + 
+  theme_eq
+```
+
+- An example that uses all of the aes: 
+
+```{r visualization_6, warning=FALSE, fig.width = 7, fig.height=8}
+# use size and color of points to represent magnitude and number of casualties, and set alpha to 0.3
+ggplot(eq_data_plot, aes(x = DATE, y = COUNTRY, min_date = as.Date("1900-01-01"), max_date = as.Date("2000-01-01"), size = EQ_PRIMARY, color = TOTAL_DEATHS)) + 
+  geom_timeline(alpha = 0.3) + 
+  geom_timeline_label(aes(n_max = 3, label = LOCATION_NAME)) + 
+  theme_eq
+```
+
+
+## Visualizing the data with maps
+
+- a map example 
+
+```{r map_1, fig.width=7, fig.height=7} 
+eq_data %>% 
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>% 
+  eq_map(annot_col = "DATE")
+```
+
+
+- a map example with annotations created using eq_create_label(): 
+
+```{r map_2, fig.width=7, fig.height=7}
+eq_data %>% 
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>% 
+  dplyr::mutate(popup_text = eq_create_label(.)) %>% 
+  eq_map(annot_col = "popup_text")
+```

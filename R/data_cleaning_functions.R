@@ -1,4 +1,11 @@
-
+#'Clean/create \code{DATE} variable
+#'
+#'Create a DATE variable in a NOAA Significant Earthquakes dataset dataframe.
+#'
+#'@param df a dataframe from the NOAA Significant Earthquakes dataset
+#'
+#'@return A dataframe with new \code{DATE} variable
+#'
 eq_clean_data <- function(df) {
   df$MONTH[is.na(df$MONTH)] <- 1
   df$DAY[is.na(df$DAY)] <- 1
@@ -14,7 +21,14 @@ eq_clean_data <- function(df) {
   )
 }
 
-
+#'Clean \code{LOCATION_NAME} variable
+#'
+#'Cleans the \code{LOCATION_NAME} variable in a NOAA Significant Earthquakes dataset dataframe.
+#'
+#'@param df a dataframe from the NOAA Significant Earthquakes dataset
+#'
+#'@return A dataframe with cleaned version of \code{LOCATION_NAME} variable
+#'
 eq_location_clean <- function(df) {
   df %>%
     dplyr::mutate(
