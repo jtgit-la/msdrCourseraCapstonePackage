@@ -11,7 +11,7 @@
 #'@examples
 #'
 #'
-#'library(msdrCourseraCapstonePackage)
+#'\dontrun{library(msdrCourseraCapstonePackage)
 #'library(magrittr)
 #'library(ggplot2)
 #'library(dplyr)
@@ -36,7 +36,7 @@
 #'  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>%
 #'  dplyr::mutate(popup_text = eq_create_label(.)) %>%
 #'  eq_map(annot_col = "popup_text")
-#'
+#'}
 
 eq_map <- function(data, annot_col = "") {
   if (annot_col != ""){
