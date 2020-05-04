@@ -16,6 +16,7 @@
 #'library(ggplot2)
 #'library(dplyr)
 #'library(lubridate)
+#'library(readr)
 #'
 #'data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
 #'
