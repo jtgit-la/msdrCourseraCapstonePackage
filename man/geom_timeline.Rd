@@ -104,6 +104,7 @@ This geom is used to create timelines for the NOAA Significant Earthquakes datas
 }
 
 \examples{
+\dontrun{
 library(msdrCourseraCapstonePackage)
 library(magrittr)
 library(ggplot2)
@@ -130,4 +131,6 @@ ggplot(eq_data_plot, aes(x = DATE, y = COUNTRY, min_date = as.Date("1900-01-01")
 
 # use size and color of points to represent magnitude and number of casualties, and set alpha to 0.3
 plot <- ggplot(eq_data_plot, aes(x = DATE, y = COUNTRY, min_date = as.Date("1900-01-01"), max_date = as.Date("1950-01-01"), size = EQ_PRIMARY, color = TOTAL_DEATHS)) + geom_timeline(alpha = 0.3) + theme_eq
+}
+
 }
