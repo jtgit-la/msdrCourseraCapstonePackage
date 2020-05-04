@@ -4,7 +4,9 @@
 \name{theme_eq}
 \alias{theme_eq}
 \title{Theme to use with geom_timeline}
-\format{An object of class \code{theme} (inherits from \code{gg}) of length 67.}
+\format{
+An object of class \code{theme} (inherits from \code{gg}) of length 93.
+}
 \usage{
 theme_eq
 }

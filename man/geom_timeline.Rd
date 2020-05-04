@@ -104,7 +104,11 @@ This geom is used to create timelines for the NOAA Significant Earthquakes datas
 }
 
 \examples{
-library(tidyverse)
+library(msdrCourseraCapstonePackage)
+library(magrittr)
+library(ggplot2)
+library(dplyr)
+library(lubridate)
 
 data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
 eq_data_raw <- read.delim(data_path)

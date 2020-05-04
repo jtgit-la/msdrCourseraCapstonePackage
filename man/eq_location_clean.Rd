@@ -9,6 +9,9 @@ eq_location_clean(df)
 \arguments{
 \item{df}{a dataframe from the NOAA Significant Earthquakes dataset}
 }
+\value{
+A dataframe with cleaned version of \code{LOCATION_NAME} variable
+}
 \description{
 Cleans the \code{LOCATION_NAME} variable in a NOAA Significant Earthquakes dataset dataframe.
 }

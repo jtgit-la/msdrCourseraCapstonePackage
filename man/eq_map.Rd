@@ -22,7 +22,12 @@ This function creates a leaflet map from a NOAA Significant Earthquake dataframe
 }
 \examples{
 
+
 library(msdrCourseraCapstonePackage)
+library(magrittr)
+library(ggplot2)
+library(dplyr)
+library(lubridate)
 
 data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
 
@@ -34,8 +39,13 @@ eq_data <-
  eq_location_clean()
 
 eq_data \%>\%
-dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) \%>\%
-eq_map(annot_col = "DATE")
+ dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) \%>\%
+ eq_map(annot_col = "DATE")
 
+readr::read_delim("earthquakes.tsv.gz", delim = "\t") \%>\%
+ eq_clean_data() \%>\%
+ dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) \%>\%
+ dplyr::mutate(popup_text = eq_create_label(.)) \%>\%
+ eq_map(annot_col = "popup_text")
 
 }
