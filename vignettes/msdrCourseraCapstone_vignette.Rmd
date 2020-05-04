@@ -24,6 +24,8 @@ This package was developed for the capstone project of the Mastering Software De
 
 ```{r setup}
 library(msdrCourseraCapstonePackage)
+library(magrittr)
+library(dplyr)
 
 data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
 
