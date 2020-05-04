@@ -27,6 +27,7 @@ library(msdrCourseraCapstonePackage)
 library(magrittr)
 library(dplyr)
 library(lubridate)
+library(ggplot2)
 
 data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
 
