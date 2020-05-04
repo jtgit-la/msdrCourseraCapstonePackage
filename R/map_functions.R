@@ -10,7 +10,12 @@
 #'
 #'@examples
 #'
+#'
 #'library(msdrCourseraCapstonePackage)
+#'library(magrittr)
+#'library(ggplot2)
+#'library(dplyr)
+#'library(lubridate)
 #'
 #'data_path <- system.file("extdata", "signif.txt", package = "msdrCourseraCapstonePackage")
 #'
