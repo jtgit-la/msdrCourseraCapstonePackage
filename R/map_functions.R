@@ -31,7 +31,7 @@
 #'  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>%
 #'  eq_map(annot_col = "DATE")
 #'
-#'readr::read_delim("earthquakes.tsv.gz", delim = "\t") %>%
+#'eq_data %>%
 #'  eq_clean_data() %>%
 #'  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>%
 #'  dplyr::mutate(popup_text = eq_create_label(.)) %>%
