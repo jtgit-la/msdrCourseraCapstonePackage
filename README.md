@@ -9,7 +9,8 @@
 Status](https://travis-ci.org/jtgit-la/msdrCourseraCapstonePackage.svg?branch=master)](https://travis-ci.org/jtgit-la/msdrCourseraCapstonePackage)
 <!-- badges: end -->
 
-The goal of msdrCourseraCapstonePackage is to …
+The goal of msdrCourseraCapstonePackage is to provide data visualization
+and cleaning tools for the NOAA Significant Earthquakes data set.
 
 ## Installation
 
@@ -17,7 +18,7 @@ You can install the released version of msdrCourseraCapstonePackage from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-# install.packages("msdrCourseraCapstonePackage")
+install.packages("msdrCourseraCapstonePackage")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
